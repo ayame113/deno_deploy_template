@@ -5,7 +5,7 @@ import { contentType } from "https://deno.land/x/media_types@v2.10.2/mod.ts";
 listenAndServe(":80", async (request) => {
   const url = new URL(request.url);
   try {
-    return new Response(await Deno.readFile(new URL(url.pathname, "./static/")), {
+    return new Response(await Deno.readFile(new URL(`./static${url.pathname}`, import.meta.url)), {
       headers: {
         "Content-Type": contentType(path.extname(request.url)) ?? "text/plain",
       },
