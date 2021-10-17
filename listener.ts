@@ -1,9 +1,9 @@
 interface Listener {
-  pattern: UrlPattern();
-  handler: ({request, url}: {Request, URL}) => Response;
+  pattern: URLPattern;
+  handler: ({ request, url }: { request: Request; url: URL }) => Response;
 }
 
 export const listeners: Listener[] = [{
-  pattern: new UrlPattern(),
-  handler: ({request, url}) => new Response(),
-}]
+  pattern: new URLPattern("..."),
+  handler: ({ request, url }) => new Response(),
+}];
