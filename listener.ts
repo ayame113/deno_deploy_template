@@ -4,7 +4,9 @@ if (!Deno.env.get("DENO_DEPLOYMENT_ID")) {
 
 interface Listener {
   pattern: URLPattern;
-  handler: ({ request, url }: { request: Request; url: URL }) => Response;
+  handler: (
+    { request, url }: { request: Readonly<Request>; url: Readonly<URL> },
+  ) => Response;
 }
 
 export const listeners: Listener[] = [{
