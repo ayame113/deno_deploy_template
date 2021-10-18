@@ -19,8 +19,7 @@ export const listeners: Listener[] = [{
       'Hello World from <a href="https://github.com/ayame113/deno_deploy_template">ayame113/deno_deploy_template</a> !',
       {
         headers: {
-          "Content-Type": contentType("html") ??
-            "text/plain",
+          "Content-Type": "text/html; charset=utf-8",
         },
       },
     ),
