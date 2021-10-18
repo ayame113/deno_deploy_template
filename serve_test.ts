@@ -14,7 +14,7 @@ Deno.test({
         `${new URL("./serve.ts", import.meta.url)}`,
       ],
     });
-    await delay(1000); // Give more information when it fails
+    await delay(5000); // Give more information when it fails
     await t.step({
       name: "hello-world",
       async fn() {
