@@ -1,5 +1,5 @@
 try {
-  if (Deno.env.get("DENO_DEPLOYMENT_ID")) {
+  if (!Deno.env.get("DENO_DEPLOYMENT_ID")) {
     await import("https://deno.land/x/dotenv@v3.0.0/load.ts");
   }
 } catch { /**/ }
