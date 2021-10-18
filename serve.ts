@@ -4,7 +4,7 @@ import { contentType } from "https://deno.land/x/media_types@v2.10.2/mod.ts";
 
 import { listeners } from "./listener.ts";
 
-listenAndServe(":80", async (request) => {
+listenAndServe(":8080", async (request) => {
   const url = new URL(request.url);
   try {
     for (const listener of listeners) {

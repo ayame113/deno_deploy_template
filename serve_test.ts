@@ -18,7 +18,7 @@ Deno.test({
     await t.step({
       name: "hello-world",
       async fn() {
-        const response = await fetch("http://localhost:80/");
+        const response = await fetch("http://localhost:8080/");
         assertEquals(
           await response.text(),
           'Hello World from <a href="https://github.com/ayame113/deno_deploy_template">ayame113/deno_deploy_template</a>!',
@@ -32,7 +32,7 @@ Deno.test({
     await t.step({
       name: "static server",
       async fn() {
-        const response = await fetch("http://localhost:80/favicon.png");
+        const response = await fetch("http://localhost:8080/favicon.png");
         assertEquals(
           new Uint8Array(await response.arrayBuffer()),
           await Deno.readFile(
@@ -48,7 +48,7 @@ Deno.test({
     await t.step({
       name: "404 server",
       async fn() {
-        const response = await fetch("http://localhost:80/foobar");
+        const response = await fetch("http://localhost:8080/foobar");
         assertEquals(
           await response.text(),
           "404 Not Found\n",
