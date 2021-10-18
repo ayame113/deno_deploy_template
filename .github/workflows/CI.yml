@@ -18,7 +18,7 @@ jobs:
       - name: 🧐 Lint
         run: deno lint
       - name: 🧐 Type Check
-        run: deno test --no-run ./dev/typecheck.ts
+        run: deno test --no-run ./dev/typecheck.ts & true
       - name: 🧐 Test
         run: deno test -A --coverage=coverage
       - name: Create coverage report
