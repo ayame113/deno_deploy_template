@@ -3,9 +3,8 @@ name: Format & Lint & Type Check & Test & Coverage
 on: [push, pull_request]
 
 jobs:
-  test:
+  lint:
     runs-on: ubuntu-latest
-
     steps:
       - name: Git Checkout Module
         uses: actions/checkout@v2
@@ -17,6 +16,15 @@ jobs:
         run: deno fmt --check
       - name: 🧐 Lint
         run: deno lint
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout Module
+        uses: actions/checkout@v2
+      - name: Use Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
       - name: 🧐 Type Check
         run: deno test --no-run ./dev/typecheck.ts & true
       - name: 🧐 Test
