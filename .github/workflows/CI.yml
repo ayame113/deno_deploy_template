@@ -20,11 +20,9 @@ jobs:
       - name: 🧐 Type Check
         run: deno test --no-run ./dev/typecheck.ts & true
       - name: 🧐 Test
-        run: deno test --allow-run --allow-net --allow-read --unstable --coverage=coverage
+        run: deno test --allow-env --allow-net --allow-read --unstable --coverage=coverage
       - name: Create coverage report
         run: deno coverage ./coverage --lcov > coverage.lcov
-      - name: llllll
-        run: cat ./coverage.lcov
       - name: Codecov
         uses: codecov/codecov-action@v1.5.2
         with:

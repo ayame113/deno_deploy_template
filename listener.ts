@@ -16,7 +16,7 @@ export const listeners: Listener[] = [{
   // deno-lint-ignore no-unused-vars
   handler: ({ request, url }) =>
     new Response(
-      'Hello World from <a href="https://github.com/ayame113/deno_deploy_template">ayame113/deno_deploy_template</a>!',
+      'Hello World from <a href="https://github.com/ayame113/deno_deploy_template">ayame113/deno_deploy_template</a> !',
       {
         headers: {
           "Content-Type": contentType("html") ??

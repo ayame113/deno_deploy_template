@@ -4,31 +4,41 @@ import { contentType } from "https://deno.land/x/media_types@v2.10.2/mod.ts";
 
 import { listeners } from "./listener.ts";
 
-listenAndServe(":8080", async (request) => {
-  const url = new URL(request.url);
-  try {
-    for (const listener of listeners) {
-      if (listener.pattern.test(url)) {
-        return listener.handler({ request, url });
+export function serve() {
+  const controller = new AbortController();
+  const server = listenAndServe(":8080", async (request) => {
+    const url = new URL(request.url);
+    try {
+      for (const listener of listeners) {
+        if (listener.pattern.test(url)) {
+          return listener.handler({ request, url });
+        }
       }
+    } catch {
+      return new Response("500 Internal Server Error\n", { status: 500 });
     }
-  } catch {
-    return new Response("500 Internal Server Error\n", { status: 500 });
-  }
-  try {
-    return new Response(
-      await Deno.readFile(new URL(`./static${url.pathname}`, import.meta.url)),
-      {
-        headers: {
-          "Content-Type": contentType(path.extname(request.url)) ??
-            "text/plain; charset=utf-8",
+    try {
+      return new Response(
+        await Deno.readFile(
+          new URL(`./static${url.pathname}`, import.meta.url),
+        ),
+        {
+          headers: {
+            "Content-Type": contentType(path.extname(request.url)) ??
+              "text/plain; charset=utf-8",
+          },
         },
-      },
-    );
-  } catch (error) {
-    if (error instanceof Deno.errors.NotFound) {
-      return new Response("404 Not Found\n", { status: 404 });
+      );
+    } catch (error) {
+      if (error instanceof Deno.errors.NotFound) {
+        return new Response("404 Not Found\n", { status: 404 });
+      }
+      return new Response("500 Internal Server Error\n", { status: 500 });
     }
-    return new Response("500 Internal Server Error\n", { status: 500 });
-  }
-});
+  }, controller);
+  return { server, controller };
+}
+
+if (import.meta.main) {
+  serve();
+}
