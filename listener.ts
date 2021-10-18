@@ -1,8 +1,8 @@
-import { contentType } from "https://deno.land/x/media_types@v2.10.2/mod.ts";
-
-if (!Deno.env.get("DENO_DEPLOYMENT_ID")) {
-  await import("https://deno.land/x/dotenv@v3.0.0/load.ts");
-}
+try {
+  if (Deno.env.get("DENO_DEPLOYMENT_ID")) {
+    await import("https://deno.land/x/dotenv@v3.0.0/load.ts");
+  }
+} catch { /**/ }
 
 interface Listener {
   pattern: URLPattern;
