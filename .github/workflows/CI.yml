@@ -20,7 +20,7 @@ jobs:
       - name: 🧐 Type Check
         run: deno test --no-run ./dev/typecheck.ts & true
       - name: 🧐 Test
-        run: deno test --allow-net --allow-read=. --unstable --coverage=coverage
+        run: deno test --allow-net --allow-env=DENO_DEPLOYMENT_ID --allow-read=. --unstable --coverage=coverage
       - name: Create coverage report
         run: deno coverage ./coverage --lcov > coverage.lcov
       - name: Codecov
