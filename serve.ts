@@ -21,7 +21,7 @@ listenAndServe(":80", async (request) => {
       {
         headers: {
           "Content-Type": contentType(path.extname(request.url)) ??
-            "text/plain",
+            "text/plain; charset=utf-8",
         },
       },
     );

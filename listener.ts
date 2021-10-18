@@ -12,7 +12,7 @@ interface Listener {
 }
 
 export const listeners: Listener[] = [{
-  pattern: new URLPattern("http{s}?://*/"),
+  pattern: new URLPattern({ pathname: "/" }),
   handler: ({ request, url }) =>
     new Response(
       'Hello World from <a href="https://github.com/ayame113/deno_deploy_template">ayame113/deno_deploy_template</a>!',
