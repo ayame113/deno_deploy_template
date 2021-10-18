@@ -4,7 +4,7 @@ import { serve } from "./serve.ts";
 
 Deno.test({
   name: "server test",
-  async fn(t) {
+  async fn(/*t*/) {
     const { server, controller } = serve();
     /*await t.step({
       name: "hello-world",
