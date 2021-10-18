@@ -1,5 +1,4 @@
 import { assertEquals } from "https://deno.land/std@0.111.0/testing/asserts.ts";
-import { delay } from "https://deno.land/std@0.111.0/async/delay.ts";
 
 import { serve } from "./serve.ts";
 
