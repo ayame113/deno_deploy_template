@@ -16,7 +16,7 @@ jobs:
         run: deno fmt --check
       - name: 🧐 Lint
         run: deno lint
-  test:
+  type-check:
     runs-on: ubuntu-latest
     steps:
       - name: Git Checkout Module
