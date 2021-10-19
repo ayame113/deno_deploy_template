@@ -1,0 +1,18 @@
+name: Format & Lint
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout Module
+        uses: actions/checkout@v2
+      - name: Use Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
+      - name: 😉 Format
+        run: deno fmt --check
+      - name: 😋 Lint
+        run: deno lint
