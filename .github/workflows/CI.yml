@@ -12,9 +12,9 @@ jobs:
         uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
-      - name: 🧐 Format
+      - name: 😉 Format
         run: deno fmt --check
-      - name: 🧐 Lint
+      - name: 😋 Lint
         run: deno lint
   type-check:
     runs-on: ubuntu-latest
@@ -36,7 +36,7 @@ jobs:
         uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
-      - name: 🧐 Test
+      - name: 😎 Test
         run: deno test --allow-net --allow-env=DENO_DEPLOYMENT_ID --allow-read=. --unstable --coverage=coverage
       - name: Create coverage report
         run: deno coverage ./coverage --lcov > coverage.lcov
