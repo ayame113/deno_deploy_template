@@ -3,7 +3,7 @@ name: Type Check
 on: [push, pull_request]
 
 jobs:
-  type-check:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - name: Git Checkout Module

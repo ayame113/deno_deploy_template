@@ -3,7 +3,7 @@ name: Format & Lint
 on: [push, pull_request]
 
 jobs:
-  lint:
+  ci:
     runs-on: ubuntu-latest
     steps:
       - name: Git Checkout Module
