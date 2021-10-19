@@ -1,9 +1,9 @@
-name: Type Check
+name: ci
 
 on: [push, pull_request]
 
 jobs:
-  ci:
+  Type Check:
     runs-on: ubuntu-latest
     steps:
       - name: Git Checkout Module
