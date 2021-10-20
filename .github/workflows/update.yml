@@ -20,12 +20,12 @@ jobs:
         with:
           commit-message: "chore(deps): update deno dependencies"
           title: Update Deno Dependencies
-          body: |
+          body: |-
             Updates stale dependencies.
-            <details><summary>Details</summary><div>\n
-            ```\n
-            ${{ env.UDD_RESULT }}\n
-            ```\n
+            <details><summary>Details</summary><div>
+            ```
+            ${{ env.UDD_RESULT }}
+            ```
             </div></details>
           branch: deno-udd
           author: GitHub <noreply@github.com>
