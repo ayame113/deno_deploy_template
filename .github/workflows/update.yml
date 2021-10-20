@@ -11,5 +11,5 @@ jobs:
       - uses: actions/checkout@master
       - uses: denoland/setup-deno@v1
       - name: run deno-udd
-        run: find . -type f | grep -E ".*\.[mc]?(ts|js)x?$" -
+        run: find . -type f | grep -E ".*\.([mc]?(ts|js)|(ts|js)x?)$" -
         #run: find .  \( -name \*.js -or -name \*.ts -or -name \*.mjs -or -name \*.mts -or -name \*.cjs -or -name \*.cts -or -name \*.jsx -or -name \*.tsx -or -name \*.mjsx -or -name \*.mtsx -or -name \*.cjsx -or -name \*.ctsx \)
