@@ -21,10 +21,10 @@ jobs:
           title: Update Deno Dependencies
           body: >
             Updates stale dependencies.
-            <details><summary>Details</summary><div>
-            ```
-            ${{ env.UDD_RESULT }}
-            ```
+            <details><summary>Details</summary><div>\n
+            ```\n
+            ${{ env.UDD_RESULT }}\n
+            ```\n
             </div></details>
           branch: deno-udd
           author: GitHub <noreply@github.com>
