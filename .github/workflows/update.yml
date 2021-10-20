@@ -1,15 +1,23 @@
-name: update-deno-dependencies
+name: ci
 
 on: [push, pull_request]
 #  schedule:
 #    - cron: "0 0 * * *"
 
 jobs:
-  udd:
+  update-deno-dependencies:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - uses: denoland/setup-deno@v1
       - name: run deno-udd
-        run: find . -type f | grep -E ".*\.([mc]?(ts|js)|(ts|js)x?)$" -
-        #run: find .  \( -name \*.js -or -name \*.ts -or -name \*.mjs -or -name \*.mts -or -name \*.cjs -or -name \*.cts -or -name \*.jsx -or -name \*.tsx -or -name \*.mjsx -or -name \*.mtsx -or -name \*.cjsx -or -name \*.ctsx \)
+        run: deno run -A https://deno.land/x/udd/main.ts $(find . -type f | grep -E ".*\.([mc]?(ts|js)|(ts|js)x?)$" -)
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: "chore(deps): update deno dependencies"
+          title: Update Deno Dependencies
+          body: Stale dependencies was found.
+          branch: deno-udd
+          author: GitHub <noreply@github.com>
+          delete-branch: true
