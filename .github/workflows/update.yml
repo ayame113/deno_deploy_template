@@ -12,6 +12,7 @@ jobs:
       - uses: denoland/setup-deno@v1
       - name: run deno-udd
         run: |
+          NO_COLOR=true
           UDD_RESULT=`deno run -A https://deno.land/x/udd/main.ts $(find . -type f | grep -E ".*\.([mc]?(ts|js)|(ts|js)x?)$" -)`
           echo UDD_RESULT="$UDD_RESULT" >> $GITHUB_ENV
       - name: Create Pull Request
@@ -19,7 +20,7 @@ jobs:
         with:
           commit-message: "chore(deps): update deno dependencies"
           title: Update Deno Dependencies
-          body: >
+          body: |
             Updates stale dependencies.
             <details><summary>Details</summary><div>\n
             ```\n
