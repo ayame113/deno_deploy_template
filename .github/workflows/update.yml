@@ -14,14 +14,12 @@ jobs:
         run: |
           UDD_RESULT=`deno run -A https://deno.land/x/udd/main.ts $(find . -type f | grep -E ".*\.([mc]?(ts|js)|(ts|js)x?)$" -)`
           echo UDD_RESULT=$UDD_RESULT >> $GITHUB_ENV
-      - name: echo
-        run: echo "${{ env.UDD_RESULT }}"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: "chore(deps): update deno dependencies"
           title: Update Deno Dependencies
-          body: Stale dependencies was found.
+          body: Updates stale dependencies.<details><summary>Details</summary>${{ env.UDD_RESULT }}</details>
           branch: deno-udd
           author: GitHub <noreply@github.com>
           delete-branch: true
