@@ -11,7 +11,9 @@ jobs:
       - uses: actions/checkout@master
       - uses: denoland/setup-deno@v1
       - name: run deno-udd
-        run: deno run -A https://deno.land/x/udd/main.ts $(find . -type f | grep -E ".*\.([mc]?(ts|js)|(ts|js)x?)$" -)
+        run: UDD_RESULT=`deno run -A https://deno.land/x/udd/main.ts $(find . -type f | grep -E ".*\.([mc]?(ts|js)|(ts|js)x?)$" -)`
+      - name: echo
+        run: echo UDD_RESULT
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
