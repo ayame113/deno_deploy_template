@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: denoland/setup-deno@v1
       - name: run deno-udd
-      - run: find .  \( -name \*.js -or -name \*.ts -or -name \*.mjs -or -name \*.mts -or -name \*.cjs -or -name \*.cts -or -name \*.jsx -or -name \*.tsx -or -name \*.mjsx -or -name \*.mtsx -or -name \*.cjsx -or -name \*.ctsx \)
+        run: find .  \( -name \*.js -or -name \*.ts -or -name \*.mjs -or -name \*.mts -or -name \*.cjs -or -name \*.cts -or -name \*.jsx -or -name \*.tsx -or -name \*.mjsx -or -name \*.mtsx -or -name \*.cjsx -or -name \*.ctsx \)
         #run: > # --[2]
         #  deno run -A https://deno.land/x/udd/main.ts
         #  $() --test="deno test --allow-net --allow-env=DENO_DEPLOYMENT_ID --allow-read=. --unstable"
