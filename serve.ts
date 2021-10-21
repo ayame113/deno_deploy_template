@@ -4,10 +4,13 @@ import { contentType } from "https://deno.land/x/media_types@v2.10.2/mod.ts";
 
 import { listeners } from "./listener.ts";
 
+// export for test
 export function serve() {
   const controller = new AbortController();
   const server = listenAndServe(":8080", async (request) => {
     const url = new URL(request.url);
+
+    // serving dynamic web page from listener.ts
     try {
       for (const listener of listeners) {
         if (listener.pattern.test(url)) {
@@ -17,6 +20,8 @@ export function serve() {
     } catch {
       return new Response("500 Internal Server Error\n", { status: 500 });
     }
+
+    // serving static web page from static folder
     try {
       return new Response(
         await Deno.readFile(
