@@ -13,14 +13,15 @@ interface Listener {
 
 export const listeners: Listener[] = [{
   pattern: new URLPattern({ pathname: "/" }),
-  // deno-lint-ignore no-unused-vars
-  handler: ({ request, url }) =>
-    new Response(
+  handler: ({ request, url }) => {
+    console.log(request, url);
+    return new Response(
       'Hello World from <a href="https://github.com/ayame113/deno_deploy_template">ayame113/deno_deploy_template</a> !',
       {
         headers: {
           "Content-Type": "text/html; charset=utf-8",
         },
       },
-    ),
+    );
+  },
 }];

@@ -4,11 +4,9 @@ import { serve } from "./serve.ts";
 
 Deno.test({
   name: "server test",
-  async fn(/*t*/) {
+  async fn() {
     const { server, controller } = serve();
-    /*await t.step({
-      name: "hello-world",
-      async fn() */ {
+    {
       const response = await fetch("http://localhost:8080/");
       assertEquals(
         await response.text(),
@@ -18,12 +16,7 @@ Deno.test({
         response.headers.get("content-type"),
         "text/html; charset=utf-8",
       );
-    } /*,
-    });
-    /*await t.step({
-      name: "static server",
-      async fn() */
-
+    }
     {
       const response = await fetch("http://localhost:8080/favicon.png");
       assertEquals(
@@ -36,12 +29,7 @@ Deno.test({
         response.headers.get("content-type"),
         "image/png",
       );
-    } /*,
-    });
-    await t.step({
-      name: "404 server",
-      async fn() */
-
+    }
     {
       const response = await fetch("http://localhost:8080/foobar");
       assertEquals(
@@ -56,9 +44,7 @@ Deno.test({
         response.headers.get("content-type"),
         "text/plain;charset=UTF-8",
       );
-    } /*,
-    });*/
-
+    }
     controller.abort();
     await server;
   },
