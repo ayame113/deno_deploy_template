@@ -7,6 +7,7 @@ Template repository for deno deploy.
 - Deploy `serve.ts` from deno deploy's github integration.
 - Add a request handler to `lisner.ts` to create a dynamic web page.
 - Build a static website by placing static files in the `static/` folder.
+- Using [dotenv](https://deno.land/x/dotenv) for local development.
 - CI that has been set up.
   - Run the test with push and pull requests.
   - It checks for deno dependency updates daily and automatically opens pull
