@@ -11,14 +11,12 @@ jobs:
       - uses: actions/checkout@master
       - uses: denoland/setup-deno@v1
       - name: run deno-udd
+        id: run-deno-udd
         env:
           NO_COLOR: true
         run: |
           UDD_RESULT=`deno run -A https://deno.land/x/udd/main.ts $(find . -type f | grep -E ".*\.([mc]?(ts|js)|(ts|js)x?)$" -)`
-          echo -e "UDD_RESULT=\"" >> $GITHUB_ENV
-          echo -e "$UDD_RESULT" >> $GITHUB_ENV
-          echo -e "\"" >> $GITHUB_ENV
-          cat $GITHUB_ENV
+          echo -e "::set-output name=UDD_RESULT::$(echo -e "$UDD_RESULT")"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
@@ -29,7 +27,7 @@ jobs:
             <details><summary>Details</summary><div>
 
             ```
-            ${{ env.UDD_RESULT }}
+            ${{ steps.run-deno-udd.outputs.UDD_RESULT }}
             ```
 
             </div></details>
