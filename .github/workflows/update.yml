@@ -16,6 +16,7 @@ jobs:
           NO_COLOR: true
         run: |
           UDD_RESULT=`deno run -A https://deno.land/x/udd/main.ts $(find . -type f | grep -E ".*\.([mc]?(ts|js)|(ts|js)x?)$" -)`
+          UDD_RESULT="${UDD_RESULT//$'\n'/\\n}"
           echo -e "::set-output name=UDD_RESULT::$(echo -e "$UDD_RESULT")"
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
