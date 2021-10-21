@@ -1,8 +1,8 @@
 name: ci
 
-on: [push, pull_request]
-#  schedule:
-#    - cron: "0 0 * * *"
+on:
+  schedule:
+    - cron: "0 9 * * *"
 
 jobs:
   update-deno-dependencies:
@@ -26,7 +26,7 @@ jobs:
           commit-message: "chore(deps): update deno dependencies"
           title: Update Deno Dependencies
           body: |-
-            Updates stale dependencies.
+            Some external modules are stale.
             <details><summary>Details</summary><div>
 
             ```
