@@ -15,7 +15,7 @@ jobs:
           NO_COLOR: true
         run: |
           UDD_RESULT=`deno run -A https://deno.land/x/udd/main.ts $(find . -type f | grep -E ".*\.([mc]?(ts|js)|(ts|js)x?)$" -)`
-          echo -e "UDD_RESULT="\"$UDD_RESULT\""" >> $GITHUB_ENV
+          echo -e "UDD_RESULT=\""$UDD_RESULT"\"" >> $GITHUB_ENV
           cat $GITHUB_ENV
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
