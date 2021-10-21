@@ -11,8 +11,9 @@ jobs:
       - uses: actions/checkout@master
       - uses: denoland/setup-deno@v1
       - name: run deno-udd
+        env:
+          NO_COLOR: true
         run: |
-          NO_COLOR=true
           UDD_RESULT=`deno run -A https://deno.land/x/udd/main.ts $(find . -type f | grep -E ".*\.([mc]?(ts|js)|(ts|js)x?)$" -)`
           echo "UDD_RESULT="$UDD_RESULT"" >> $GITHUB_ENV
           cat $GITHUB_ENV
