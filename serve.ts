@@ -13,8 +13,9 @@ export function serve() {
     // serving dynamic web page from listener.ts
     try {
       for (const listener of listeners) {
-        if (listener.pattern.test(url)) {
-          return listener.handler({ request, url });
+        const pattern = listener.pattern.exec(url);
+        if (pattern) {
+          return listener.handler({ request, url, pattern });
         }
       }
     } catch {

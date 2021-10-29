@@ -1,23 +1,23 @@
 // Using dotenv only for local development.
 // For deno deploy, using built-in environment variable support.
-try {
-  if (!Deno.env.get("DENO_DEPLOYMENT_ID")) {
-    await import("https://deno.land/x/dotenv@v3.1.0/load.ts");
-  }
-} catch { /**/ }
+import "https://deno.land/x/dotenv@v3.1.0/load.ts";
 
 interface Listener {
   pattern: URLPattern;
   handler: (
-    { request, url }: { request: Readonly<Request>; url: Readonly<URL> },
-  ) => Response;
+    { request, url, pattern }: {
+      request: Readonly<Request>;
+      url: Readonly<URL>;
+      pattern: URLPatternResult;
+    },
+  ) => Response | Promise<Response>;
 }
 
 export const listeners: Listener[] = [
   {
     pattern: new URLPattern({ pathname: "/" }),
-    handler: ({ request, url }) => {
-      console.log(request, url);
+    handler: ({ request, url, pattern }) => {
+      console.log(request, url, pattern.pathname);
       return new Response(
         'Hello World from <a href="https://github.com/ayame113/deno_deploy_template">ayame113/deno_deploy_template</a> !',
         {
