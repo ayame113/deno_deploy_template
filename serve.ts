@@ -7,7 +7,7 @@ import { listeners } from "./listener.ts";
 // export for test
 export function createServer() {
   const controller = new AbortController();
-  const server = serve(":8080", async (request) => {
+  const server = serve(async (request) => {
     const url = new URL(request.url);
 
     // serving dynamic web page from listener.ts
